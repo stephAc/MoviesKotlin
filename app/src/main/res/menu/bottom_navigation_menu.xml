@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/menu_home"
+            android:icon="@drawable/baseline_home_black_18dp"
+            android:title="Home"
+            android:state_checked="true"
+            android:color="@color/black"
+    />
+    <item
+            android:state_checked="false"
+            android:id="@+id/menu_recherche"
+            android:icon="@drawable/baseline_search_black_18dp"
+            android:title="Rechercher"
+            android:color="@color/white"
+    />
+    <item
+            android:state_checked="false"
+            android:id="@+id/menu_compte"
+            android:icon="@drawable/baseline_account_circle_black_18dp"
+            android:title="Compte"
+            android:color="@color/white"
+    />
+</menu>
