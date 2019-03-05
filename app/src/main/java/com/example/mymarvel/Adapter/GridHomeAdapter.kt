@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.GridView
 import android.widget.TextView
-import com.example.mymarvel.Data.FilmCollection
 import com.example.mymarvel.R
 
 
-class GridHomeAdapter(private var context: Context, val films : FilmCollection?, val books : Array<String>) : BaseAdapter(){
+class GridHomeAdapter(private var context: Context, val books : Array<String>) : BaseAdapter(){
 
     override fun getCount(): Int {return books.size;}
     override fun getItem(position: Int): Any {return 0;} //films.listFilm[position]

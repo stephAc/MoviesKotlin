@@ -1,7 +1,5 @@
 package com.example.mymarvel.Utilities
 
-import com.example.mymarvel.Data.FilmCollection
-import com.google.gson.GsonBuilder
 import okhttp3.*
 import java.io.IOException
 import org.json.JSONObject

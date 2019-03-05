@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.mymarvel.Adapter.GridHomeAdapter
 import com.example.mymarvel.R
-import com.example.mymarvel.Utilities.getFilmPopular
+import com.example.mymarvel.Utilities.ApiFilm.ApiFilm.createApiService
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -32,9 +32,9 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        getFilmPopular()
+        createApiService()
 
-        gridHomeAdapter = GridHomeAdapter(activity!!,null ,book)
+        gridHomeAdapter = GridHomeAdapter(activity!! ,book)
         gridviewHome.adapter = gridHomeAdapter
     }
 }
