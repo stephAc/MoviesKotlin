@@ -1,6 +1,7 @@
 package com.example.mymarvel.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import com.example.mymarvel.Models.Films
 import com.example.mymarvel.R
+import com.example.mymarvel.Ui.FilmDetailsActivity
 import com.squareup.picasso.Picasso
 
 class GridHomeAdapter(private var context: Context, val listFi : List<Films>) : BaseAdapter(){
@@ -19,8 +21,15 @@ class GridHomeAdapter(private var context: Context, val listFi : List<Films>) : 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val inflator = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflator.inflate(R.layout.grid_cell_layout,parent,false)
+
+        view.setOnClickListener {
+            val intent = Intent(context, FilmDetailsActivity::class.java)
+            intent.putExtra("filmId", listFi[position].id)
+            context.startActivity(intent)
+        }
+
         val imgPoster = view.findViewById<ImageView>(R.id.posterView)
-        Picasso.get().load("https://image.tmdb.org/t/p/w342/${listFi[position].poster_path}").into(imgPoster);
+        Picasso.get().load("https://image.tmdb.org/t/p/w342/${listFi[position].poster_path}").into(imgPoster)
         return view
     }
 }
