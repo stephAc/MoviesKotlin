@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        toolbarHeader.toolbar_title.text="My Marvel"
+        toolbarHeader.toolbar_title.text="Movies"
         handleNavigationClick()
         handleFragmentBody(HomeFragment())
     }

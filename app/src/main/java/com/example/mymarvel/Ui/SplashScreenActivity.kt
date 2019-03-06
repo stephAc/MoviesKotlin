@@ -1,8 +1,10 @@
-package com.example.mymarvel
+package com.example.mymarvel.Ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.mymarvel.MainActivity
+import com.example.mymarvel.R
 
 public class SplashScreenActivity : AppCompatActivity(){
 
