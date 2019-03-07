@@ -24,7 +24,10 @@ class GridHomeAdapter(private var context: Context, val listFi : List<Films>) : 
 
         view.setOnClickListener {
             val intent = Intent(context, FilmDetailsActivity::class.java)
-            intent.putExtra("filmId", listFi[position].id)
+            intent.putExtra("filmPosterPath", listFi[position].poster_path)
+            intent.putExtra("filmTitle", listFi[position].original_title)
+            intent.putExtra("filmOverview", listFi[position].overview)
+            intent.putExtra("filmDate", listFi[position].release_date)
             context.startActivity(intent)
         }
 

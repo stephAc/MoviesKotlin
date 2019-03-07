@@ -2,16 +2,15 @@ package com.example.mymarvel.Ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import com.example.mymarvel.MainActivity
-import com.example.mymarvel.Models.FilmResult
+import android.widget.ImageView
+import android.widget.TextView
 import com.example.mymarvel.R
-import com.example.mymarvel.Services.ApiInterface
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_film_details_activity.*
+import com.example.mymarvel.MainActivity
+import android.content.Intent
+import android.view.View
+
 
 class FilmDetailsActivity : AppCompatActivity(){
 
@@ -19,32 +18,21 @@ class FilmDetailsActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_film_details_activity)
         val bundle = intent.extras
+        val posterPath = bundle?.getString("filmPosterPath").toString()
+        val txtOverviewDetail = findViewById<TextView>(R.id.txtOverviewDetail)
+        val txtTitleDetail = findViewById<TextView>(R.id.txtTitleDetail)
+        val imgPoster = findViewById<ImageView>(R.id.imgPosterDetail)
+        val txtDate = findViewById<TextView>(R.id.txtDateDetail)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(MainActivity.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        toolbarTitleDetail.setNavigationIcon(R.drawable.baseline_arrow_back_black_24dp)
+        txtDate.text = bundle.getString("filmDate").toString()
+        txtTitleDetail.text = bundle.getString("filmTitle").toString()
+        txtOverviewDetail.text = bundle.getString("filmOverview").toString()
+        Picasso.get().load("https://image.tmdb.org/t/p/w780/${posterPath}").into(imgPoster)
 
-        Log.d("§", "" + bundle?.getInt("filmId").toString())
-
-        val myInterface = retrofit.create(ApiInterface::class.java)
-        val call = myInterface.getDetailFilm(
-            bundle?.getInt("filmId").toString(),
-            MainActivity.API_KEY,
-            MainActivity.LANGUAGE
-        )
-
-        call.enqueue(object : Callback<FilmResult> {
-            override fun onFailure(call: Call<FilmResult>, t: Throwable) {
-                println("Error on response")
-            }
-
-            override fun onResponse(call: Call<FilmResult>, response: Response<FilmResult>) {
-                val result = response.body()
-                val listFilmPop = result!!.results
-
-                Log.d("§","" + result)
-                Log.d("§","" + listFilmPop)
+        toolbarTitleDetail.setNavigationOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View) {
+                startActivity(Intent(applicationContext, MainActivity::class.java))
             }
         })
     }
